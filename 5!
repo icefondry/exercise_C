@@ -1,0 +1,11 @@
+#include <stdio.h>
+int main()
+{
+  int result = 1;
+  int multiple = 2;
+  while(multiple <= 5)
+  {
+    result *= mutiple;
+    ++multiple;
+  }
+}
