@@ -8,4 +8,5 @@ int main()
     result *= mutiple;
     ++multiple;
   }
+  return 0;
 }
