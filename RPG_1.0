@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct
+{
+    int atk;
+    int def;
+    int hp;
+    int item;
+    int mp;
+}Zack = {97, 43, 300, 9, 100};
+struct
+{
+    int atk;
+    int def;
+    int hp;
+}Goblin = {100, 53, 710};
+int main()
+{
+   char key;
+   int i;
+   printf("Once upon a time,There was a boy named Zack lived happy with his family.\n");getchar();
+   printf("He has a sister named Stella and he adored her very much.\n");getchar();
+   printf("However,one day his sister was kidnapped by a goblin.\n");getchar();
+   printf("He went to the forest and find his sister imprisoned by the goblin.\n");getchar();
+   for(i=0; i<=26; i++)
+   {
+       if(26 == i) printf("\n");
+       else printf(">");
+   }
+   printf("Stella:Help me!Zack\n");getchar();
+   printf("Zack:You monster!!!Give Back my sister!!!\n");getchar();
+   printf("Goblin:Day dream!I will eat you all!\n");getchar();
+   printf("Zack:What about eating my blade?\n");getchar();
+   printf("Zack extract his sword!!!\n");
+
+   while((Zack.hp>0) && (Goblin.hp>0))
+   {
+     printf("Zack-------------------\n");
+     printf("health point:%d\n",Zack.hp);
+     printf("magic point:%d\n",Zack.mp);
+     printf("health potion:%d\n",Zack.item);
+     printf("Goblin------------------\n");
+     printf("health point:%d\n",Goblin.hp);
+     printf("Command-----------------\n");
+     printf("Z:SLASH\n");
+     printf("X:RECOVER\n");
+     printf("C:MAGIC SLASH\n");
+     ask:
+     switch(key = getchar())
+     {
+       case 'z':
+       case 'Z':printf("Goblin is slashed!!!\n");Goblin.hp -= (Zack.atk - Goblin.def);break ;
+       case 'x':
+       case 'X':if(Zack.item <= 0) {printf("There is no health potion\n"); goto ask;}
+                else {printf("Zack's Heath +100\n"); Zack.hp+=100; Zack.item--; break;}
+       case 'c':
+       case 'C':if(Zack.mp <= 0) {printf("There is no magic power.\n"); goto ask;}
+                else {printf("Goblin is badly injured!!!\n");Zack.mp-=20; Goblin.hp -= ((Zack.atk)*2-Goblin.def);break;}
+       default: goto ask;
+     }
+     Zack.hp -= (Goblin.atk - Zack.def);
+     printf("Goblin fights back!!!\n");
+   }
+   if( (Zack.hp > 0)&&(Goblin.hp <= 0) )
+   {
+        printf("The Goblin is defeated and Zack saved his sister.\n");
+   }
+   else
+   {
+       printf("Zack is dead and failed to save his sister.\n");
+   }
+   system("pause");
+   return 0;
+}
